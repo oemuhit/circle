@@ -27,7 +27,7 @@ const notes=computed(()=>
             function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
           })
       break;
-    case 4:
+    case 3:
       return(
           {
             sound: ['GS2', 'GS2', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
