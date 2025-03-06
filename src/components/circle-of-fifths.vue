@@ -3,7 +3,7 @@
 import {computed, onMounted, ref} from "vue";
 
 const notest = {
-  sound: ['G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
+  sound: ['G#2', 'G#2', 'G#2','G#2', 'G#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
   displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
 
   major: ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb', 'F'],
@@ -18,7 +18,7 @@ const notes=computed(()=>
     case 7:
       return(
           {
-            sound: ['G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
+            sound: ['GS2', 'GS2', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
             displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
 
             major: ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F'],
@@ -27,7 +27,18 @@ const notes=computed(()=>
             function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
           })
       break;
+    case 4:
+      return(
+          {
+            sound: ['GS2', 'GS2', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
+            displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
 
+            major: ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'C#', 'G#', 'Eb', 'Bb', 'F'],
+            minor: ['a', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'bb', 'f', 'c', 'g', 'd'],
+            roman: ['I', 'V', 'ii', 'vi', 'iii', 'vii°', '', '', '', '', '', 'IV'],
+            function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
+          })
+      break;
     default:
 return(
     {
@@ -74,7 +85,7 @@ function initiateSampler() {
         'D#3': 'Ds3.mp3',
         'F#3': 'Fs3.mp3',
         A4: 'A4.mp3',
-        'G#2': 'G#2.mp3',
+        'G#2': 'GS2.mp3',
         'A#4': 'A#4.mp3',
         'C#5': 'C#5.mp3',
         C4: 'C4.mp3',
@@ -97,7 +108,7 @@ function play(notex: number[], isMajor = true) {
     setTimeout(() => {
       playingIndex.value = note;
       sampler.triggerAttackRelease(
-        notes.sound[note],    
+        notes.value.sound[note],
         '8n'
       );
       
@@ -175,7 +186,7 @@ onMounted(() => {
       <div class="flex flex-col gap-2">
         <div>Selected Key: {{ notes.major[selectedIndex] }} major / {{ notes.minor[selectedIndex] }} minor</div>
       </div>
-      <Button @click="play([0,1,2,3,4,5,6,7,8,9,10])">Play</Button>
+      <Button @click="play([4,3,4,4,3])">Play</Button>
      note playing index: {{ playingIndex }}
 <br>
 
