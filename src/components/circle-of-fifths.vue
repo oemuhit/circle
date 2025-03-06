@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // Define the data structure for our circle of fifths
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
-const notes = {
+const notest = {
   sound: ['G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
   displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
 
@@ -11,6 +11,43 @@ const notes = {
   roman: ['I', 'V', 'ii', 'vi', 'iii', 'vii°', '', '', '', '', '', 'IV'],
   function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
 };
+
+const notes=computed(()=>
+{
+  switch(selectedIndex.value) {
+    case 7:
+      return(
+          {
+            sound: ['G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
+            displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
+
+            major: ['C', 'G', 'D', 'A', 'E', 'B', 'Gb', 'Db', 'Ab', 'Eb', 'Bb', 'F'],
+            minor: ['a', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'bb', 'f', 'c', 'g', 'd'],
+            roman: ['I', 'V', 'ii', 'vi', 'iii', 'vii°', '', '', '', '', '', 'IV'],
+            function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
+          })
+      break;
+
+    default:
+return(
+    {
+      sound: ['G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4', 'C#5','D#4', 'F#2','G#2', 'A#4'],
+          displayData: ['about C', 'about G ', 'about D', 'about A', 'about E', 'about B', 'about F#', 'about Db', 'about Ab', 'about Eb', 'about Bb', 'about F'],
+
+        major: ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb', 'F'],
+        minor: ['a', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'bb', 'f', 'c', 'g', 'd'],
+        roman: ['I', 'V', 'ii', 'vi', 'iii', 'vii°', '', '', '', '', '', 'IV'],
+        function: ['Tonik', 'Dominant', 'Süpertonik', 'Altmedyan', 'Medyan', 'Çeken ses', '', '', '', '', '', 'Altdominant']
+    })
+      // code block
+  }
+
+
+
+
+
+})
+
 
 /*
 
